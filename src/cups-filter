@@ -11,6 +11,7 @@ BASE=/Library/Printers/hp-legacy-mac
 export PATH="$BASE/bin:/usr/bin:/bin"
 export GS_LIB="$BASE/share/ghostscript/Resource/Init:$BASE/share/ghostscript/lib:$BASE/share/ghostscript/Resource/Font:$BASE/share/ghostscript/fonts"
 GS="$BASE/bin/gs"
+export GSBIN="$GS"
 
 # --- Per-queue defaults ---
 DRIVER="foo2zjs-wrapper -z3 -P -L0"   # wrapper + driver options
@@ -32,7 +33,7 @@ fi
 
 # --- Run the pipeline ---
 if [ -n "$6" ]; then
-    exec $DRIVER $COLOR -b "$GS" < "$6"
+    exec $DRIVER $COLOR < "$6"
 else
-    exec $DRIVER $COLOR -b "$GS"
+    exec $DRIVER $COLOR
 fi
