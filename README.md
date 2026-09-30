@@ -29,7 +29,7 @@ Turn the printer on and connect it via USB, then run the command above. The tool
 
 ### Color (no firmware required)
 - ✅ **HP LaserJet CP1025 / CP1025nw** — verified (color + mono)
-- 🟢 HP Color LaserJet CP1215
+- ✅ **HP Color LaserJet CP1215** — verified (color + mono)
 - 🟢 HP Color LaserJet 1500 / 1600 / 2600n
 
 ### Mono — requires firmware 🟡
@@ -77,7 +77,7 @@ sudo sh install.sh              # uses the local dist/bundle
 
 - [ ] Intel (x86_64) bundle
 - [ ] Automatic firmware download/upload for firmware-dependent models
-- [ ] Field testing of models other than CP1025
+- [ ] Field testing of models other than CP1025 and CP1215
 - [ ] Signed / notarized `.pkg` (requires a Developer ID)
 
 ## License

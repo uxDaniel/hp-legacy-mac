@@ -121,6 +121,12 @@ configure_queue() {
         | sed -E 's/%[A-Za-z]//g; s/[[:space:]]+/ /g; s/[[:space:]]+$//')"
     [ -n "$DRIVER" ] || DRIVER="foo2zjs-wrapper"
 
+    # Some PPDs (e.g. CP1215) carry the model flag as a PrinterType option that
+    # foomatic-rip would have substituted for %A; append it ourselves.
+    PRINTER_TYPE="$(sed -nE 's/^\*FoomaticRIPOptionSetting PrinterType=[^:]*:[[:space:]]*"([^"]*)".*/\1/p' "$PPD" \
+        | head -1 | sed -E 's/[[:space:]]+$//')"
+    [ -n "$PRINTER_TYPE" ] && DRIVER="$DRIVER $PRINTER_TYPE"
+
     # Color capability
     COLOR_CAPABLE=0
     grep -qiE '^\*ColorDevice:[[:space:]]*True' "$PPD" && COLOR_CAPABLE=1
